@@ -26,7 +26,7 @@ namespace StudentSystem.Data
                 new Course { CourseId = 2, Name = "Databases 101", Description = "Relational DB basics", StartDate = new DateTime(2025, 3, 15), EndDate = new DateTime(2025, 6, 1), Price = 149.00m },
                 new Course { CourseId = 3, Name = "EF Core", Description = "Code First & LINQ", StartDate = new DateTime(2025, 4, 1), EndDate = new DateTime(2025, 6, 15), Price = 179.00m },
                 new Course { CourseId = 4, Name = "Web Basics", Description = null, StartDate = new DateTime(2025, 3, 20), EndDate = new DateTime(2025, 5, 20), Price = 99.00m }
-            };
+            }; 
         }
 
         public static List<Resource> GetResources()
