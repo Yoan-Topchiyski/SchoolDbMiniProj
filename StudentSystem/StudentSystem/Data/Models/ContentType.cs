@@ -1,8 +1,10 @@
 namespace StudentSystem.Data.Models
 {
-    // Enum for ContentType: Application, Pdf, Zip
     public enum ContentType
     {
+        Application = 1,
+        Pdf = 2,
+        Zip = 3
     }
 }
 

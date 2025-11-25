@@ -1,9 +1,13 @@
 namespace StudentSystem.Data.Models
 {
-    // Resource entity with ResourceId, Name, Url, ResourceType enum, CourseId foreign key
-    // Navigation property to Course
     public class Resource
     {
+        public int ResourceId { get; set; }
+        public string Name { get; set; }
+        public string Url { get; set; }
+        public ResourceType ResourceType { get; set; }
+        public int CourseId { get; set; }
+        public Course Course { get; set; }
     }
 }
 
