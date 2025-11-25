@@ -1,8 +1,23 @@
-namespace StudentSystem.Data.Configuration
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore;
+using StudentSystem.Data.Models;
+
+public class ResourceConfiguration : IEntityTypeConfiguration<Resource>
 {
-    // Fluent API configuration for Resource entity: constraints, relationships, and foreign keys
-    public class ResourceConfiguration
+    public void Configure(EntityTypeBuilder<Resource> builder)
     {
+        builder.HasKey(r => r.ResourceId);
+
+        builder.Property(r => r.Name)
+               .HasMaxLength(50)
+               .IsUnicode(true)
+               .IsRequired();
+
+        builder.Property(r => r.Url)
+               .IsUnicode(false)
+               .IsRequired();
+
+        builder.Property(r => r.ResourceType)
+               .IsRequired();
     }
 }
-

@@ -1,9 +1,37 @@
-namespace StudentSystem.Data
+using Microsoft.EntityFrameworkCore;
+using StudentSystem.Data.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SchoolDB
 {
-    // DbContext class for StudentSystem database with DbSet properties for all entities
-    // Configure relationships and constraints in OnModelCreating method
-    public class StudentSystemContext
+    public class SchoolDbContext : DbContext
     {
+        public SchoolDbContext()
+        {
+
+        }
+
+        public SchoolDbContext(DbContextOptions<SchoolDbContext> options)
+           : base(options)
+        {
+
+        }
+
+
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+           
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
-

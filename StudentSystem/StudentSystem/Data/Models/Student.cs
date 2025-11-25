@@ -1,7 +1,10 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace StudentSystem.Data.Models
 {
     public class Student
     {
+        
         public int StudentId { get; set; }
         public string Name { get; set; }
         public string PhoneNumber { get; set; }
