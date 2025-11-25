@@ -1,20 +1,19 @@
 using Microsoft.EntityFrameworkCore;
 using StudentSystem.Data.Models;
 
-namespace SchoolDB
+namespace StudentSystem.Data
 {
-    public class SchoolDbContext : DbContext
+    public class StudentSystemContext : DbContext
     {
-        public SchoolDbContext()
+        public StudentSystemContext()
         {
         }
 
-        public SchoolDbContext(DbContextOptions<SchoolDbContext> options)
+        public StudentSystemContext(DbContextOptions<StudentSystemContext> options)
             : base(options)
         {
         }
 
-      
         public DbSet<Student> Students { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<Resource> Resources { get; set; }
@@ -26,7 +25,7 @@ namespace SchoolDB
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseSqlServer(
-                    "Server=.;Database=StudentSystemDB;Trusted_Connection=True;Encrypt=False;");
+                    "Server=(localdb)\\MSSQLLocalDB;Database=StudentSystem;Trusted_Connection=True;");
             }
 
             base.OnConfiguring(optionsBuilder);
@@ -34,14 +33,7 @@ namespace SchoolDB
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new StudentConfiguration());
-            modelBuilder.ApplyConfiguration(new CourseConfiguration());
-            modelBuilder.ApplyConfiguration(new ResourceConfiguration());
-            modelBuilder.ApplyConfiguration(new HomeworkConfiguration());
-            modelBuilder.ApplyConfiguration(new StudentCourseConfiguration());
-
-
-            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(StudentSystemContext).Assembly);
         }
     }
 }

@@ -2,20 +2,26 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 using StudentSystem.Data.Models;
 
-public class HomeworkConfiguration : IEntityTypeConfiguration<Homework>
+namespace StudentSystem.Data.Configuration
 {
-    public void Configure(EntityTypeBuilder<Homework> builder)
+    public class HomeworkConfiguration : IEntityTypeConfiguration<Homework>
     {
-        builder.HasKey(h => h.HomeworkId);
+        public void Configure(EntityTypeBuilder<Homework> builder)
+        {
+            builder.HasKey(h => h.HomeworkId);
 
-        builder.Property(h => h.Content)
-               .IsUnicode(false)
-               .IsRequired();
+            builder.Property(h => h.HomeworkId)
+                   .ValueGeneratedNever();
 
-        builder.Property(h => h.ContentType)
-               .IsRequired();
+            builder.Property(h => h.Content)
+                   .IsUnicode(false)
+                   .IsRequired();
 
-        builder.Property(h => h.SubmissionTime)
-               .IsRequired();
+            builder.Property(h => h.ContentType)
+                   .IsRequired();
+
+            builder.Property(h => h.SubmissionTime)
+                   .IsRequired();
+        }
     }
 }
